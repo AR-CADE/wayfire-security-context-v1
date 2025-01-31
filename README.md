@@ -59,7 +59,7 @@ deny_mpv_dmabuf = zwlr_export_dmabuf_manager_v1
 or for example:
 deny_0_0 = zwlr_screencopy_manager_v1
 deny_0_1 = wp_security_context_manager_v1
-deny_1_1 = zwlr_export_dmabuf_manager_v1
+deny_1_0 = zwlr_export_dmabuf_manager_v1
 
 deny_[A_UNIQUE_IDENTIFIER]_[THE_ITERATION_UNIQUE_IDENTIFIER] = [THE_PROTOCOL_INTERFACE_NAME]
 
@@ -70,7 +70,7 @@ allow_mpv_dmabuf = zwlr_export_dmabuf_manager_v1
 or for example:
 allow_0_0 = zwlr_screencopy_manager_v1
 allow_0_1 = wp_security_context_manager_v1
-allow_1_1 = zwlr_export_dmabuf_manager_v1
+allow_1_0 = zwlr_export_dmabuf_manager_v1
 
 allow_[A_UNIQUE_IDENTIFIER]_[THE_ITERATION_UNIQUE_IDENTIFIER] = [THE_PROTOCOL_INTERFACE_NAME]
  
