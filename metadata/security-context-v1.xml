@@ -4,5 +4,67 @@
 		<_short>Security Context V1 Protocol</_short>
 		<_long>An implementation of the wlr-security-context-v1 protocol.</_long>
 		<category>Utility</category>
+		<option name="blacklist_mode" type="string">
+				<_short>set the blacklist mode.</_short>
+				<_long>`initial`(default)`, apply the initial wayfire's blacklist then add custom rules if needed. `reset`, use only the custom rules.</_long>
+				<default>initial</default>				
+				<desc>
+					<value>initial</value>
+					<_name>Initial</_name>
+				</desc>	
+				<desc>
+					<value>reset</value>
+					<_name>Reset</_name>
+				</desc>
+		</option>
+		<option name="blacklist" type="dynamic-list" type-hint="plain">
+			<_short>blacklist</_short>
+			<_long>The blacklist to be applied to all applications.</_long>
+			<entry prefix="blacklist_" type="string">
+				<_short>Rule</_short>
+				<_long>Define a protocol to be blacklisted.</_long>
+			</entry>
+		</option>
+		<option name="denylist" type="dynamic-list" type-hint="plain">
+			<_short>deny list</_short>
+			<_long>The deny list of protocols to be applied to a specific application.</_long>
+			<entry prefix="deny_" type="string">
+				<_short>Rule</_short>
+				<_long>Define a protocol to be denied.</_long>
+			</entry>
+		</option>
+		<option name="allowlist" type="dynamic-list" type-hint="plain">
+			<_short>allow list</_short>
+			<_long>The allow list of protocols to be applied to a specific application.</_long>
+			<entry prefix="allow_" type="string">
+				<_short>Rule</_short>
+				<_long>Define a protocol to be allowed.</_long>
+			</entry>
+		</option>
+		<option name="applications" type="dynamic-list" type-hint="dict">
+			<_short>Application list.</_short>
+			<_long>The list of applications to manage.</_long>
+			<entry prefix="app_id_" type="string"/>
+			<entry prefix="sandbox_engine_" type="string">
+				<default></default>
+			</entry>
+			<entry prefix="blacklist_mode_" type="string">
+				<_short>set the blacklist mode for this application.</_short>
+				<_long>`inherit`(default)`, inherit from the parent black list and apply the deny / allow list. `initial`, apply the initial wayfire's black list then apply the deny/allow list. `reset`, use only the deny / allow list.</_long>
+				<default>inherit</default>
+				<desc>
+					<value>inherit</value>
+					<_name>Inherit</_name>
+				</desc>
+				<desc>
+					<value>initial</value>
+					<_name>Initial</_name>
+				</desc>	
+				<desc>
+					<value>reset</value>
+					<_name>Reset</_name>
+				</desc>			
+			</entry>
+		</option>
 	</plugin>
 </wayfire>
