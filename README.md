@@ -25,30 +25,54 @@ to blacklist a protocol for all applications:
 ```
 blacklist_screencopy = zwlr_screencopy_manager_v1
 blacklist_layer_shell = zwlr_layer_shell_v1
-blacklist_xxx = [THE_PROTOCOL_INTERFACE_NAME]
+
+or for example:
+blacklist_0 = zwlr_screencopy_manager_v1
+blacklist_1 = zwlr_layer_shell_v1
+
+blacklist_[A_UNIQUE_IDENTIFIER] = [THE_PROTOCOL_INTERFACE_NAME]
 ```
 
 to set an application to manage:
 ```
 app_id_waycheck = dev.serebit.Waycheck
-sandbox_engine_waycheck = org.flatpak
+sandbox_engine_waycheck = org.flatpak (optional)
+app_id_mpv = io.mpv.Mpv
+sandbox_engine_mpv = org.flatpak (optional)
 
-app_id_xxx = [THE_APPLICATION_ID]
-sandbox_engine_xxx = [THE_SANDBOX_ENGINE]
+or for example:
+app_id_0 = dev.serebit.Waycheck
+sandbox_engine_0 = org.flatpak (optional)
+app_id_1 = io.mpv.Mpv
+sandbox_engine_1 = org.flatpak (optional)
+
+app_id_[A_UNIQUE_IDENTIFIER] = [THE_APPLICATION_ID]
+sandbox_engine_[A_UNIQUE_IDENTIFIER] = [THE_SANDBOX_ENGINE] (optional)
 ```
 
 to set a deny / allow list of protocols for a specific application:
 ```
 deny_waycheck_screencopy = zwlr_screencopy_manager_v1
 deny_waycheck_security_context = wp_security_context_manager_v1
+deny_mpv_dmabuf = zwlr_export_dmabuf_manager_v1
 
-deny_xxx_yyy = [THE_PROTOCOL_INTERFACE_NAME]
+or for example:
+deny_0_0 = zwlr_screencopy_manager_v1
+deny_0_1 = wp_security_context_manager_v1
+deny_1_1 = zwlr_export_dmabuf_manager_v1
 
+deny_[A_UNIQUE_IDENTIFIER]_[THE_ITERATION_UNIQUE_IDENTIFIER] = [THE_PROTOCOL_INTERFACE_NAME]
 
 allow_waycheck_screencopy = zwlr_screencopy_manager_v1
 allow_waycheck_security_context = wp_security_context_manager_v1
+allow_mpv_dmabuf = zwlr_export_dmabuf_manager_v1
 
-allox_xxx_yyy = [THE_PROTOCOL_INTERFACE_NAME]
+or for example:
+allow_0_0 = zwlr_screencopy_manager_v1
+allow_0_1 = wp_security_context_manager_v1
+allow_1_1 = zwlr_export_dmabuf_manager_v1
+
+allow_[A_UNIQUE_IDENTIFIER]_[THE_ITERATION_UNIQUE_IDENTIFIER] = [THE_PROTOCOL_INTERFACE_NAME]
  
 ```
 
