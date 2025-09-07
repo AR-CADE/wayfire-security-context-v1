@@ -141,8 +141,7 @@ class wayfire_security_context_v1_protocol_impl : public wf::plugin_interface_t
 
         if (found_application != wayfire_security_context->applications.end())
         {
-            const auto [_, found_app_id, found_sandbox_engine,
-                        internal_blacklist] = found_application->second;
+            const auto [_, found_app_id, found_sandbox_engine, __] = found_application->second;
 
             if ((app_id == found_app_id) &&
                 (((sandbox_engine.empty() == false) &&
