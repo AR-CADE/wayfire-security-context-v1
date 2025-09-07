@@ -3,6 +3,7 @@
 #include <wayfire/nonstd/wlroots-full.hpp>
 #include <wayfire/signal-definitions.hpp>
 #include <wlr/types/wlr_security_context_v1.h>
+#include <unordered_set>
 
 const std::unordered_set<std::string> initial_blacklist = {
     "zwlr_output_manager_v1",
