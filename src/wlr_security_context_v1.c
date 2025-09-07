@@ -1,19 +1,18 @@
 #include <assert.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <wlr/types/wlr_security_context_v1.h>
+#include "wlr_security_context_v1.h"
 #include <wlr/util/log.h>
 #include "security-context-v1-protocol.h"
 
-const struct wlr_security_context_v1_state *_Z45wlr_security_context_manager_v1_lookup_clientP31wlr_security_context_manager_v1P9wl_client(
-		struct wlr_security_context_manager_v1 *manager, struct wl_client *client);
+const struct wlr_security_context_v1_state *_Z45wlr_security_context_manager_v1_lookup_clientP31wlr_security_context_manager_v1PK9wl_client(
+		struct wlr_security_context_manager_v1 *, const struct wl_client *);
 
 struct wlr_security_context_manager_v1 *_Z38wlr_security_context_manager_v1_createP10wl_display(
-		struct wl_display *display) ;
+		struct wl_display *) ;
 		
 
 // For some reasons (that i don't want to take the time to understand),
@@ -213,7 +212,7 @@ static void security_context_handle_commit(struct wl_client *client,
 
 	// In theory the compositor should prevent this with a global filter, but
 	// let's make sure it doesn't happen.
-	if (_Z45wlr_security_context_manager_v1_lookup_clientP31wlr_security_context_manager_v1P9wl_client(security_context->manager,
+	if (_Z45wlr_security_context_manager_v1_lookup_clientP31wlr_security_context_manager_v1PK9wl_client(security_context->manager,
 			client) != NULL) {
 		wl_resource_post_error(resource,
 			WP_SECURITY_CONTEXT_MANAGER_V1_ERROR_NESTED,
@@ -418,6 +417,7 @@ static void handle_display_destroy(struct wl_listener *listener, void *data) {
 	struct wlr_security_context_manager_v1 *manager =
 		wl_container_of(listener, manager, display_destroy);
 	wl_signal_emit_mutable(&manager->events.destroy, manager);
+
 	assert(wl_list_empty(&manager->events.destroy.listener_list));
 	assert(wl_list_empty(&manager->events.commit.listener_list));
 
@@ -447,6 +447,7 @@ struct wlr_security_context_manager_v1 *_Z38wlr_security_context_manager_v1_crea
 	}
 
 	wl_list_init(&manager->contexts);
+
 	wl_signal_init(&manager->events.destroy);
 	wl_signal_init(&manager->events.commit);
 
@@ -456,8 +457,8 @@ struct wlr_security_context_manager_v1 *_Z38wlr_security_context_manager_v1_crea
 	return manager;
 }
 
-const struct wlr_security_context_v1_state *_Z45wlr_security_context_manager_v1_lookup_clientP31wlr_security_context_manager_v1P9wl_client(
-		struct wlr_security_context_manager_v1 *manager, struct wl_client *client) {
+const struct wlr_security_context_v1_state *_Z45wlr_security_context_manager_v1_lookup_clientP31wlr_security_context_manager_v1PK9wl_client(
+		struct wlr_security_context_manager_v1 *manager, const struct wl_client *client) {
 	struct wl_listener *listener = wl_client_get_destroy_listener((struct wl_client *)client,
 		security_context_client_handle_destroy);
 	if (listener == NULL) {
