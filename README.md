@@ -83,5 +83,11 @@ allow_[A_UNIQUE_IDENTIFIER]_[THE_ITERATION_UNIQUE_IDENTIFIER] = [THE_PROTOCOL_IN
 - The file `wlr_security_context_v1.c` has been added to the project as a workaround, and just only because Wayfire do not currently support this protocol, otherwise it would not be needed.
 - The plugin should be compatible with any version of Wayfire
 
+```
+- WARNING: with wlroots 0.19, this plugin (the `wlr_security_context_v1.c` part) use some private apis, and an older version of `wlr_security_context_v1.h` has been added to workaround this.
+
+Please note that a correct implementation for this plugin would be to build wayfire with the security-context protocol enabled and remove `wlr_security_context_v1.{c,h}` from this plugin, since it will be embedded in wayfire.
+```
+
 # Contact
 arm-cade@proton.me
