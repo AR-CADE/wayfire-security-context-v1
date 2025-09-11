@@ -1,5 +1,5 @@
 project(
-	'security-context-v1',
+	'extra-security-context-v1',
     'c',
 	'cpp',
 	version: '0.1',
@@ -30,7 +30,6 @@ add_project_arguments(['-DWAYFIRE_PLUGIN'], language: ['cpp', 'c'])
 add_project_link_arguments(['-rdynamic'], language:'cpp')
 
 
-subdir('proto')
 subdir('src')
 subdir('metadata')
 
@@ -41,7 +40,7 @@ summary = [
 	'----------------',
 	'',
 	'----------------',
-	'security-context-v1 @0@'.format(meson.project_version()),
+	'extra-security-context-v1 @0@'.format(meson.project_version()),
 	'----------------',
 	''
 ]

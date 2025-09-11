@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <wayfire>
-	<plugin name="security-context-v1">
+	<plugin name="extra-security-context-v1">
 		<_short>Security Context V1 Protocol</_short>
 		<_long>An implementation of the wlr-security-context-v1 protocol.</_long>
 		<category>Utility</category>

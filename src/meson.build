@@ -1,6 +1,5 @@
 wf_security_context_v1 = shared_module(
-    'security-context-v1', 
-    'wayfire-security-context-v1.cpp', 
-    'wlr_security_context_v1.c', 
-    dependencies: [wayfire, wp_security_context_v1],
+    'extra-security-context-v1', 
+    'wayfire-extra-security-context-v1.cpp', 
+    dependencies: [wayfire],
     install: true, install_dir: wayfire.get_variable(pkgconfig: 'plugindir'))

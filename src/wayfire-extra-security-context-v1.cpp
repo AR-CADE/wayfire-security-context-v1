@@ -38,7 +38,7 @@ typedef std::tuple<std::string, std::string, std::string, std::string> Applicati
 typedef std::pair<std::string, std::string> DenyRule;
 typedef std::pair<std::string, std::string> AllowRule;
 
-class wayfire_security_context_v1_protocol_impl : public wf::plugin_interface_t
+class wayfire_extra_security_context_v1 : public wf::plugin_interface_t
 {
   public:
     void init() override
@@ -77,15 +77,15 @@ class wayfire_security_context_v1_protocol_impl : public wf::plugin_interface_t
 
   private:
     wf::option_wrapper_t<std::string> blacklist_mode_option{
-        "security-context-v1/blacklist_mode"};
+        "extra-security-context-v1/blacklist_mode"};
     wf::option_wrapper_t<wf::config::compound_list_t<std::string, std::string,
-        std::string>> applications_option{"security-context-v1/applications"};
+        std::string>> applications_option{"extra-security-context-v1/applications"};
     wf::option_wrapper_t<wf::config::compound_list_t<std::string>> allowlist_option{
-        "security-context-v1/allowlist"};
+        "extra-security-context-v1/allowlist"};
     wf::option_wrapper_t<wf::config::compound_list_t<std::string>> denylist_option{
-        "security-context-v1/denylist"};
+        "extra-security-context-v1/denylist"};
     wf::option_wrapper_t<wf::config::compound_list_t<std::string>> blacklist_option{
-        "security-context-v1/blacklist"};
+        "extra-security-context-v1/blacklist"};
 
     std::unordered_set<std::string> blacklist;
     std::unordered_map<std::string, Application> applications;
@@ -93,7 +93,7 @@ class wayfire_security_context_v1_protocol_impl : public wf::plugin_interface_t
     std::vector<AllowRule> allowlist;
 
     static bool application_is_blacklisted(const std::string & protocol, const Application application,
-        const wayfire_security_context_v1_protocol_impl *wayfire_security_context)
+        const wayfire_extra_security_context_v1 *wayfire_security_context)
     {
         const auto [id, app_id, sandbox_engine, blacklist_mode] = application;
 
@@ -136,7 +136,7 @@ class wayfire_security_context_v1_protocol_impl : public wf::plugin_interface_t
 
     static bool is_blacklisted(const std::string & protocol, const std::string & app_id,
         const std::string & sandbox_engine,
-        const wayfire_security_context_v1_protocol_impl *wayfire_security_context)
+        const wayfire_extra_security_context_v1 *wayfire_security_context)
     {
         auto const found_application = wayfire_security_context->applications.find(app_id);
 
@@ -159,7 +159,7 @@ class wayfire_security_context_v1_protocol_impl : public wf::plugin_interface_t
 
     static bool can_activate(const std::string & protocol, const std::string & app_id,
         const std::string & sandbox_engine,
-        const wayfire_security_context_v1_protocol_impl *wayfire_security_context)
+        const wayfire_extra_security_context_v1 *wayfire_security_context)
     {
         return is_blacklisted(protocol, app_id, sandbox_engine,
             wayfire_security_context) ? false : true;
@@ -179,7 +179,7 @@ class wayfire_security_context_v1_protocol_impl : public wf::plugin_interface_t
             return true;
         }
 
-        auto const wayfire_security_context = static_cast<wayfire_security_context_v1_protocol_impl*>(data);
+        auto const wayfire_security_context = static_cast<wayfire_extra_security_context_v1*>(data);
 
         // Restrict usage of privileged protocols to unsandboxed clients
         const struct wlr_security_context_v1_state *security_context =
@@ -307,4 +307,4 @@ class wayfire_security_context_v1_protocol_impl : public wf::plugin_interface_t
     struct wlr_security_context_manager_v1 *security_context_manager_v1;
 };
 
-DECLARE_WAYFIRE_PLUGIN(wayfire_security_context_v1_protocol_impl);
+DECLARE_WAYFIRE_PLUGIN(wayfire_extra_security_context_v1);

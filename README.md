@@ -1,4 +1,4 @@
-# wayfire-security-context-v1
+# extra-wayfire-security-context-v1
 A plugin for wayfire that implement the wlr-security-context-v1 protocol.
 
 
@@ -16,10 +16,10 @@ $ sudo ninja -C build install
 
 in ~/.config/wayfire.ini:
 
-- Add `security-context-v1` to the plugins list
-- Add a `[security-context-v1]` section
+- Add `extra-security-context-v1` to the plugins list
+- Add a `[extra-security-context-v1]` section
 
-in the [security-context-v1] section:
+in the `[extra-security-context-v1]` section:
 
 to blacklist a protocol for all applications:
 ```
@@ -78,16 +78,7 @@ allow_[A_UNIQUE_IDENTIFIER]_[THE_ITERATION_UNIQUE_IDENTIFIER] = [THE_PROTOCOL_IN
 
 
 # Note
-- This implementation is inspired from sway (see [server.c](https://github.com/swaywm/sway/blob/master/sway/server.c#L123)) and should work nearly the same. 
-- I am currently working on adding preferences to the plugin to let users configure a global blacklist and a whitelist per application. After I’m done, I will submit a PR.
-- The file `wlr_security_context_v1.c` has been added to the project as a workaround, and just only because Wayfire do not currently support this protocol, otherwise it would not be needed.
-- The plugin should be compatible with any version of Wayfire
-
-```
-- WARNING: with wlroots 0.19, this plugin (the `wlr_security_context_v1.c` part) use some private apis, and an older version of `wlr_security_context_v1.h` has been added to workaround this.
-
-Please note that a correct implementation for this plugin would be to build wayfire with the security-context protocol enabled and remove `wlr_security_context_v1.{c,h}` from this plugin, since it will be embedded in wayfire.
-```
+- This implementation is inspired from sway (see [server.c](https://github.com/swaywm/sway/blob/master/sway/server.c#L123)) and should work nearly the same with some exras. 
 
 # Contact
 arm-cade@proton.me

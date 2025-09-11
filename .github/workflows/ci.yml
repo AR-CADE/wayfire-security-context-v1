@@ -44,21 +44,6 @@ jobs:
       with:
         path: wayfire-security-context-v1
     - run: cd wayfire-security-context-v1 && meson build --prefix=/usr --buildtype=release && ninja -v -Cbuild
-  test_tumbleweed:
-    name: "Test on openSUSE Tumbleweed"
-    runs-on: ubuntu-latest
-    container:
-        image: opensuse/tumbleweed:latest
-    steps:
-    - run: zypper --non-interactive --gpg-auto-import-keys refresh && zypper --non-interactive dup
-    - run: zypper --non-interactive install git clang pkgconf meson ninja wayland-devel xwayland-devel wayland-protocols-devel Mesa-libGLESv3-devel libinput-devel libxkbcommon-devel libpixman-1-0-devel glm-devel libdrm-devel libglvnd-devel cairo-devel pango-devel systemd-devel scdoc seatd-devel jsoncpp-devel pcre2-devel hwdata libdisplay-info-devel yyjson-devel
-    - run: zypper --non-interactive install wayfire wayfire-devel         
-
-    - name: Wayfire Security Context V1
-      uses: actions/checkout@v5
-      with:
-        path: wayfire-security-context-v1
-    - run: cd wayfire-security-context-v1 && meson build --prefix=/usr --buildtype=release && ninja -v -Cbuild
   test_code_style:
     name: "Check code style with uncrustify"
     runs-on: ubuntu-latest
