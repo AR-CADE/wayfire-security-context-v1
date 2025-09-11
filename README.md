@@ -1,4 +1,4 @@
-# extra-wayfire-security-context-v1
+# wayfire-extra-security-context-v1
 A plugin for wayfire that implement the wlr-security-context-v1 protocol.
 
 
@@ -55,7 +55,7 @@ to set a deny / allow list of protocols for a specific application:
 deny_waycheck_screencopy = zwlr_screencopy_manager_v1
 deny_waycheck_security_context = wp_security_context_manager_v1
 deny_mpv_dmabuf = zwlr_export_dmabuf_manager_v1
-
+extra-
 or for example:
 deny_0_0 = zwlr_screencopy_manager_v1
 deny_0_1 = wp_security_context_manager_v1
@@ -78,7 +78,7 @@ allow_[A_UNIQUE_IDENTIFIER]_[THE_ITERATION_UNIQUE_IDENTIFIER] = [THE_PROTOCOL_IN
 
 
 # Note
-- This implementation is inspired from sway (see [server.c](https://github.com/swaywm/sway/blob/master/sway/server.c#L123)) and should work nearly the same with some exras. 
+- This implementation is inspired from sway (see [server.c](https://github.com/swaywm/sway/blob/master/sway/server.c#L123)) and should work nearly the same with some extras. 
 
 # Contact
 arm-cade@proton.me
