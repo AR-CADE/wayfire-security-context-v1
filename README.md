@@ -19,4 +19,4 @@ The only advice I can give you is to avoid systemd and Flatpak (or any project t
 - https://github.com/systemd/systemd/pull/40954
 - https://gitlab.freedesktop.org/accountsservice/accountsservice/-/merge_requests/176
 - https://gitlab.freedesktop.org/xdg/xdg-specs/-/merge_requests/113
-
+- https://github.com/archlinux/archinstall/pull/4290
